@@ -1,0 +1,13 @@
+# povolenie prepisovanie url adries
+RewriteEngine On
+
+# adresar kde mam celu aplikaciu
+RewriteBase /etenis/
+
+
+#ak linkujem na nejaky existujuci subor tak sa otvori ten a nebude sa tam vkladat index.php..napr.localhost/skuska/css/main.css
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#vlozi za ten hlavny adresar /etenis/ index.php na pozadi a za nim pojde vsetko ostatne
+RewriteRule .* index.php/$0 [PT,L]
